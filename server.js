@@ -5,6 +5,58 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne = {
+    title:'article-one',
+    heading:'article-one',
+    content:`
+    <p> this is content of article one</p>  
+    `
+};
+
+function createTemplate(data){
+  var title=data.title ;
+  var heading = data.heading ;
+  var content=data.content ;
+  
+  var htmlTemplate = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>
+            ${title}
+        </title>
+        <meta name="viewpart" content="width=device-width initial-scale=1" />
+     <link href="/ui/style.css" rel="stylesheet" />    
+      </head>
+      <body>
+        <div class="container">
+        <a href='/'>Home</a>
+        <hr>
+        <div>
+          <h1>
+            ${heading}
+           </h1>
+        </div>
+        <div>
+          <p>
+            ${content}
+          </p>
+        </div>
+        </div>
+      </body>
+    </html>
+  `;
+  return htmlTemplate;
+}
+
+
+
+
+
+
+
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
