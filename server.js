@@ -12,6 +12,21 @@ var articleOne = {
     <p> this is content of article one</p>  
     `
 };
+var articleTwo = {
+    title:'article-two',
+    heading:'article-two',
+    content:`
+    <p> this is content of article two</p>  
+    `
+};
+
+var articleThree = {
+    title:'article-three',
+    heading:'article-three',
+    content:`
+    <p> this is content of article three</p>  
+    `
+};
 
 function createTemplate(data){
   var title=data.title ;
@@ -66,11 +81,11 @@ app.get('/article-one', function (req , res) {
 });
 
 app.get('/article-two', function (req , res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article-two.html')); 
+   res.send(createTemplate(articleTwo));
 });
 
 app.get('/article-three', function (req , res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));  
+   res.send(createTemplate(articleThree));  
 });
 
 app.get('/ui/style.css', function (req, res) {
