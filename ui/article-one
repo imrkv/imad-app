@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Article-one</title>
+    <meta name="viewpart" content="width=device-width initial-scale=1" />
+  </head>
+  <body>
+    <a href='/'>Home</a>
+    <hr>
+    <div>
+      <h1>Article one</h1>
+    </div>
+    <div>
+      <p>This is paragraph about article one</p>
+    </div>
+  </body>
+</html>
