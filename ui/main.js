@@ -18,7 +18,7 @@ button.onclick = function() {
 };
 
 var submit = document.getElementById('submit_btn');
-button.onclick = function() {
+submit.onclick = function() {
     //Create a Request to counter Endpoint
     var request = new XMLHttpRequest();
     
