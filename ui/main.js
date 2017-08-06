@@ -1,4 +1,4 @@
-button = document.getElementById("counter");
+var button = document.getElementById("counter");
 button.onclick = function(){
     //Create a Request to counter Endpoint
     var request = new XMLHttpRequest();
