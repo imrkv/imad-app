@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-const Pool = require('pg');
+const {Pool} = require('pg');
 
 var app = express();
 app.use(morgan('combined'));
