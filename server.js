@@ -97,9 +97,22 @@ app.get('/submit-name',function(req,res){
    res.send(JSON.stringify(names));
 });
 
-app.get('/:articleName', function (req , res) {
+/*app.get('/:articleName', function (req , res) {
     var articleName=req.params.articleName;
    res.send(createTemplate(articles[articleName])); 
+});*/
+
+app.get('/article/:articleName', function (req , res) {
+    pool.query("'SELECT * FROM aticle WHERE title =' + 'req.params.articleName'",function(err,result){
+        if(err) {
+          res.status(500).send(err.toString());
+        }else if(result.rows.length === 0) {
+            res.status(404).send('Article Not found');
+        }else{
+            var articleData = result.rows[0];
+          res.send(createTemplate(articleData));
+      }
+    });
 });
 
 app.get('/ui/style.css', function (req, res) {
