@@ -17,7 +17,7 @@ var config = {
     user:'rkvithlani',
     database:'rkvithlani',
     port: '5432',
-    password: process.evn.DB_PASSWORD
+    password: process.env.DB_PASSWORD
 };
 var articles = {
     'article-one': {
