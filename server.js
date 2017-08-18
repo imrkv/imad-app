@@ -19,6 +19,7 @@ var config = {
     port: '5432',
     password: process.env.DB_PASSWORD
 };
+/*
 var articles = {
     'article-one': {
         title:'article-one',
@@ -38,7 +39,7 @@ var articles = {
         content:`
         <p> this is content of article three</p>  
         `}
-};
+};*/
 
 function createTemplate(data){
   var title=data.title ;
