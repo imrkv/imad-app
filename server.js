@@ -106,7 +106,7 @@ app.post('/create-user', function(req,res){
        if(err) {
           res.status(500).send(err.toString());
       }else {
-          res.send("user Successfully Created" + username);
+          res.staus(200).send("user Successfully Created" + username);
       }
    });
 });
@@ -119,7 +119,7 @@ app.post('/login', function(req,res){
           res.status(500).send(err.toString());
       }else {
           if(result.rows.length === 0){
-              res.send(403).send('invalid username/password');
+              res.status(403).send('invalid username/password');
           }
           else{
               var dbString = result.rows[0].password;
@@ -128,10 +128,10 @@ app.post('/login', function(req,res){
               if(hashedPassword === dbString){
                   
                   req.session.auth = {userId: result.rows[0].id}
-                  res.send('Credential Correct');
+                  res.status(200).send('Credential Correct');
               }
               else{
-                  res.send(403).send('invalid username/password');
+                  res.status(403).send('invalid username/password');
               }
           }
       }
