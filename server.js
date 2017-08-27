@@ -166,6 +166,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+/*
 var names=[];
 app.get('/submit-name',function(req,res){
    var name=req.query.name;
@@ -173,7 +174,7 @@ app.get('/submit-name',function(req,res){
    res.send(JSON.stringify(names));
 });
 
-/*app.get('/:articleName', function (req , res) {
+app.get('/:articleName', function (req , res) {
     var articleName=req.params.articleName;
    res.send(createTemplate(articles[articleName])); 
 });*/
@@ -206,9 +207,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/favicon.ico', function (req, res) {
-
   res.sendFile(path.join(__dirname, 'ui', 'favicon.ico'));
-
 });
 
 // Do not change port, otherwise your app won't run on IMAD servers
