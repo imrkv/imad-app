@@ -106,7 +106,7 @@ app.post('/create-user', function(req,res){
        if(err) {
           res.status(500).send(err.toString());
       }else {
-          res.send("user Successfully Created" + username);
+          res.status(200).send("user Successfully Created" + username);
       }
    });
 });
@@ -128,7 +128,7 @@ app.post('/login', function(req,res){
               if(hashedPassword === dbString){
                   
                   req.session.auth = {userId: result.rows[0].id};
-                  res.send('Credential Correct');
+                  res.status(200).send('Credential Correct');
               }
               else{
                   res.status(403).send('invalid username/password');
