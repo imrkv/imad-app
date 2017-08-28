@@ -105,11 +105,12 @@ app.post('/create-user', function(req,res){
    var password = req.body.password;
    var salt = crypto.randomBytes(128).toString('HEX');
    var dbString = hash(password,salt);
+   res.setHeader('Content-Type', 'application/json');
    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString], function(err,result){
        if(err) {
           res.status(500).send(err.toString());
       }else {
-          res.send("user Successfully Created" + username);
+          res.send(JSON.parse('{"message":"user Successfully Created' + username + '}"'));
           
       }
    });
@@ -118,12 +119,14 @@ app.post('/create-user', function(req,res){
 app.post('/login', function(req,res){
     var username = req.body.username;
     var password = req.body.password;
+    res.setHeader('Content-Type', 'application/json');
     pool.query('SELECT * FROM "user" WHERE username = $1',[username], function(err,result){
        if(err) {
           res.status(500).send(err.toString());
       }else {
           if(result.rows.length === 0){
-              res.status(403).send('invalid username/password');
+             
+              res.status(403).send(JSON.parse('{"error":"invalid username/password"}'));
           }
           else{
               var dbString = result.rows[0].password;
@@ -132,11 +135,12 @@ app.post('/login', function(req,res){
               if(hashedPassword === dbString){
                   
                   req.session.auth = {userId: result.rows[0].id};
-                  res.setHeader('Content-Type', 'application/json');
+                  
                   res.send(JSON.parse('{"message":"Credential Correct"}'));
               }
               else{
-                  res.status(403).send('invalid username/password');
+                  
+                res.status(403).send(JSON.parse('{"error":"invalid username/password"}'));
               }
           }
       }
