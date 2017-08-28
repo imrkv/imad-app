@@ -108,7 +108,7 @@ app.post('/create-user', function(req,res){
    res.setHeader('Content-Type', 'application/json');
    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString], function(err,result){
        if(err) {
-          res.status(500).send(err.toString());
+          res.status(500).send(JSON.parse('{"error":"' + err.toString() + '"}'));
       }else {
           res.send(JSON.parse('{"message":"user Successfully Created: ' + username +'"}'));
           
@@ -122,7 +122,7 @@ app.post('/login', function(req,res){
     res.setHeader('Content-Type', 'application/json');
     pool.query('SELECT * FROM "user" WHERE username = $1',[username], function(err,result){
        if(err) {
-          res.status(500).send(err.toString());
+          res.status(500).send(JSON.parse('{"error":"' + err.toString() + '"}'));
       }else {
           if(result.rows.length === 0){
              
