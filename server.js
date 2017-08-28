@@ -133,7 +133,7 @@ app.post('/login', function(req,res){
                   
                   req.session.auth = {userId: result.rows[0].id};
                   res.setHeader('Content-Type', 'application/json');
-                  res.send(JSON.stringify("'message':'Credential Correct'"));
+                  res.send(JSON.parse("'message':'Credential Correct'"));
               }
               else{
                   res.status(403).send('invalid username/password');
