@@ -132,10 +132,10 @@ app.post('/login', function(req,res){
               if(hashedPassword === dbString){
                   
                   req.session.auth = {userId: result.rows[0].id};
-                  res.send('{Credential Correct}');
+                  res.send('Credential Correct');
               }
               else{
-                  res.status(403).send('{invalid username/password}');
+                  res.status(403).send('invalid username/password');
               }
           }
       }
