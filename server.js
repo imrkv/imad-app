@@ -203,6 +203,20 @@ app.get('/articles/:articleName', function (req , res) {
     });
 });
 
+app.get('/get-articles',function(req,res){
+   pool.query("SELECt * FROM article", function(err,result){
+       if(err){
+            res.status(500).send('{"error":'+JSON.stringify(err.toString())+'}');   
+       }else{
+           if(result.rows.length === 0) {
+                res.status(404).send(JSON.parse('{"error":"Article Not Found"}'));
+            }else{
+                res.send(JSON.parse(result.rows));
+            }
+       }
+   }); 
+});
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
