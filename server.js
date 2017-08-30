@@ -204,7 +204,7 @@ app.get('/articles/:articleName', function (req , res) {
 });
 
 app.get('/get-articles',function(req,res){
-   pool.query("SELECt * FROM article", function(err,result){
+   pool.query("SELECT * FROM article", function(err,result){
        if(err){
             res.status(500).send('{"error":'+JSON.stringify(err.toString())+'}');   
        }else{
