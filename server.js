@@ -211,7 +211,7 @@ app.get('/get-articles',function(req,res){
            if(result.rows.length === 0) {
                 res.status(404).send(JSON.parse('{"error":"Article Not Found"}'));
             }else{
-                res.send(result);
+                res.send(result.rows);
             }
        }
    }); 
